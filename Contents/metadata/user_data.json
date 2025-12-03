@@ -1,0 +1,12 @@
+{
+  "first_name": "Ayanokouji",
+  "last_name": "Kiyotaka",
+  "address_line_1": "123 Example Street",
+  "address_line_2": "Apartment 4B",
+  "city": "Bengaluru",
+  "state": "Karnataka",
+  "postal_code": "560001",
+  "country": "India",
+  "phone_number": "+91 98765 43210",
+  "date_of_birth": "2000-01-01"
+}
