@@ -59,11 +59,11 @@ These steps assume you are running the code in Google AI Studio or another envi
      "last_name": "Kiyotaka",
      "address_line_1": "123 Example Street",
      "address_line_2": "Apartment 4B",
-     "city": "Bengaluru",
-     "state": "Karnataka",
-     "postal_code": "560001",
-     "country": "India",
-     "phone_number": "+91 98765 43210"
+     "city": "Name here",
+     "state": "State here",
+     "postal_code": "Pin here",
+     "country": "Name here",
+     "phone_number": "+Country_Code Phone"
    }
    ```
 
