@@ -131,4 +131,4 @@ Detailed deployment steps are beyond the scope of this README but can be derived
 
 ## License and Disclaimer
 
-This project is open‑sourced under the MIT license.  It is intended for educational purposes.  Always handle personal data securely and remove sensitive information before committing code to a public repository.
+This project is open‑sourced under the MIT license.  It is intended for educational purposes.
