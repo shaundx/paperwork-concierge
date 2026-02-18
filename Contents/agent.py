@@ -1,27 +1,7 @@
 """
-agent.py
-========
-
-Entry point for the Digital Paperwork Butler agent.  This module defines the
-root agent using the Google Agent Development Kit (ADK) and registers the
-custom tools defined in `tools/form_tools.py`.  When executed as a script, it
-launches an interactive console using the in‑memory runner so you can chat
-directly with the agent.
-
 Usage:
 
     python agent.py
-
-Before running, make sure to:
-
-1. Install the dependencies listed in `requirements.txt`.
-2. Set the environment variable `GOOGLE_API_KEY` with your Google API key from
-   AI Studio or Vertex AI so the Gemini model can be invoked.
-3. Populate `metadata/user_data.json` with your personal information for
-   autofill (see README for details).
-
-The agent will prompt you for input and respond using the Gemini model.  To
-quit the session, type ``quit`` at the prompt.
 """
 
 from __future__ import annotations
@@ -43,15 +23,7 @@ from tools.form_tools import (
 
 
 def create_agent() -> Agent:
-    """Instantiate the root Digital Paperwork Butler agent.
 
-    Returns
-    -------
-    Agent
-        Configured ADK agent with custom tools.
-    """
-    # Choose a Gemini model.  You can change this to another model supported
-    # by your API key (e.g. gemini-1.0-pro, gemini-1.5-flash, etc.).
     model_id = os.environ.get("GEMINI_MODEL", "gemini-pro")
     return Agent(
         name="digital_paperwork_butler",
