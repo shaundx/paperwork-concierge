@@ -1,12 +1,4 @@
 """
-form_tools.py
-================
-
-This module defines custom function tools for the Digital Paperwork Butler.  Each
-function is designed to be wrapped by the Agent Development Kit (ADK) as a
-tool.  The docstrings and type annotations are written so that Gemini and
-ADK can infer parameter names and return values for tool invocation.
-
 Functions:
 
 * `parse_form` – Extracts form fields from a PDF and returns a mapping of field
@@ -36,9 +28,8 @@ from typing import Dict, List, Optional, Tuple
 
 from pypdf import PdfReader, PdfWriter
 
-###############################################################################
-# Helper functions
-###############################################################################
+
+# Helper
 
 def _load_user_data(user_data_path: str) -> Dict[str, str]:
     """Load user metadata from a JSON file.
@@ -57,9 +48,8 @@ def _load_user_data(user_data_path: str) -> Dict[str, str]:
         return json.load(f)
 
 
-###############################################################################
-# Tool functions
-###############################################################################
+
+# Tool
 
 def parse_form(pdf_path: str) -> Dict[str, Optional[str]]:
     """Extract form fields and their values from a PDF form.
@@ -110,14 +100,7 @@ def autofill_form(
     output_dir: Optional[str] = None,
     flatten: bool = False,
 ) -> str:
-    """Autofill blank fields in a PDF form using user data.
-
-    This tool reads the PDF at ``pdf_path`` and fills any empty fields whose
-    names match keys in ``user_data``.  If an output directory is provided, a
-    new PDF is written there; otherwise, the filled form is written to a file
-    next to the original PDF with suffix ``_filled``.  The function returns the
-    path to the newly written PDF.
-
+    """
     Parameters
     ----------
     pdf_path: str
@@ -151,7 +134,7 @@ def autofill_form(
     # Build a mapping of field names to fill values (case‑insensitive)
     # If no user_data provided, attempt to load defaults.
     if user_data is None:
-        # Determine the default metadata path relative to this file
+        
         repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
         default_path = os.path.join(repo_root, "metadata", "user_data.json")
         try:
@@ -164,7 +147,7 @@ def autofill_form(
     fill_values: Dict[str, str] = {}
     for name, field in fields.items():
         value = field.get("/V")
-        # If field is empty or None, attempt to autofill
+        # If field is empty or none
         if value in ("", None):
             key_lower = name.lower()
             if key_lower in user_data_lower:
@@ -241,17 +224,7 @@ def validate_form(fields: Dict[str, Optional[str]]) -> Dict[str, List[str]]:
 
 
 def explain_field(field_name: str) -> str:
-    """Explain the meaning of a form field in plain language.
-
-    This is a simple wrapper function that returns a prompt asking Gemini to
-    explain the given field.  It does not call Gemini directly; instead, the
-    agent will receive this return value and use the language model to
-    generate a helpful explanation for the user.  For example, if the field
-    name is ``address_line_2``, the agent might reply:
-
-        "Address Line 2 is used for additional location information such as
-        apartment or suite numbers.  Leave it blank if you don't have one."
-
+    """
     Parameters
     ----------
     field_name: str
